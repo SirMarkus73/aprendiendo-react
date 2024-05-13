@@ -1,9 +1,9 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { Task } from "./components/Task.jsx"
+import { TaskCreator } from "./components/TaskCreator.jsx"
 
 import "./index.css"
-import { TaskCreator } from "./components/TaskCreator.jsx"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
