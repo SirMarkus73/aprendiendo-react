@@ -7,7 +7,7 @@ export function Task({ id, title, children }) {
     return (
         <article
             className={
-                "flex w-2/3 flex-row justify-around gap-3 border bg-slate-700 p-1 dark:bg-neutral-700"
+                "flex w-2/3 flex-row justify-around gap-3 border border-black bg-neutral-400 p-1 dark:bg-neutral-700"
             }
         >
             <div className={"flex flex-col gap-2"}>

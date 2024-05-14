@@ -5,8 +5,10 @@ export function TaskCreator() {
     const { register, handleSubmit } = useForm()
 
     return (
-        <fieldset className={"mx-3 border p-3"}>
-            <legend>Creador de tareas</legend>
+        <fieldset className={"mx-3 border border-black p-3 dark:border-white"}>
+            <legend className={"px-1 font-mono text-xl font-semibold"}>
+                Creador de tareas
+            </legend>
             <form
                 className={"mx-3 flex flex-col items-center gap-5"}
                 onSubmit={handleSubmit(createTask)}

@@ -63,7 +63,7 @@ export function editTask(id) {
     tasks.map((task) => {
         if (task.id === id) {
             const newName = prompt("Nuevo titulo", task.title)
-            const newDescription = prompt("Nueva descripcion", task.description)
+            const newDescription = prompt("Nueva descripción", task.description)
 
             const newTask = {
                 id: task.id,
