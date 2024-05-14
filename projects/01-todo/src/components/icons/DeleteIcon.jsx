@@ -4,12 +4,7 @@ export function DeleteIcon({ className }) {
     console.log(className)
 
     return (
-        <svg
-            viewBox="0 -5 32 32"
-            version="1.1"
-            fill="#000000"
-            className={`${className}`}
-        >
+        <svg viewBox="0 -5 32 32" className={`${className}`}>
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
                 id="SVGRepo_tracerCarrier"

@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 
 export function EditIcon({ className }) {
     return (
-        <svg viewBox="0 0 24 24" fill="#000000" className={className}>
+        <svg viewBox="0 0 24 24" className={className}>
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
                 id="SVGRepo_tracerCarrier"
