@@ -37,7 +37,7 @@ export function getTasks() {
 }
 
 export function removeTask(id) {
-    const tasks = JSON.parse(localStorage.getItem("tasks"))
+    const tasks = getTasks()
 
     let newTasks = []
 
@@ -51,6 +51,33 @@ export function removeTask(id) {
         localStorage.setItem("tasks", JSON.stringify(newTasks))
     } else {
         localStorage.removeItem("tasks")
+    }
+
+    location.reload()
+}
+
+export function editTask(id) {
+    const tasks = getTasks()
+
+    let newTasks = []
+    tasks.map((task) => {
+        if (task.id === id) {
+            const newName = prompt("Nuevo titulo", task.title)
+            const newDescription = prompt("Nueva descripcion", task.description)
+
+            const newTask = {
+                id: task.id,
+                title: newName,
+                description: newDescription,
+            }
+            newTasks.push(newTask)
+        } else {
+            newTasks.push(task)
+        }
+    })
+
+    if (newTasks.length > 0) {
+        localStorage.setItem("tasks", JSON.stringify(newTasks))
     }
 
     location.reload()

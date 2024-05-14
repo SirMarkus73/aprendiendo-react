@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { removeTask } from "../logic.js"
+import { removeTask, editTask } from "../logic.js"
 
 export function Task({ id, title, children }) {
     return (
@@ -20,7 +20,13 @@ export function Task({ id, title, children }) {
                 >
                     Remove task
                 </button>
-                <button>Edit task</button>
+                <button
+                    onClick={() => {
+                        editTask(id)
+                    }}
+                >
+                    Edit task
+                </button>
             </div>
         </article>
     )
