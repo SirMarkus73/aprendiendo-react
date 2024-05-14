@@ -18,6 +18,7 @@ export function TaskCreator() {
                         name={"title"}
                         {...register("title")}
                         className={"text-black"}
+                        required
                     />
                 </label>
 
@@ -27,6 +28,7 @@ export function TaskCreator() {
                         name={"description"}
                         className={"text-black"}
                         {...register("description")}
+                        required
                     />
                 </label>
 

@@ -1,5 +1,7 @@
 import PropTypes from "prop-types"
 import { removeTask, editTask } from "../logic.js"
+import { DeleteIcon } from "./icons/DeleteIcon.jsx"
+import { EditIcon } from "./icons/EditIcon.jsx"
 
 export function Task({ id, title, children }) {
     return (
@@ -13,20 +15,26 @@ export function Task({ id, title, children }) {
                 <p>{children}</p>
             </div>
             <div className={"flex flex-col gap-2"}>
-                <button
-                    onClick={() => {
-                        removeTask(id)
-                    }}
-                >
-                    Remove task
-                </button>
-                <button
-                    onClick={() => {
-                        editTask(id)
-                    }}
-                >
-                    Edit task
-                </button>
+                <label className={"flex w-max flex-row gap-2"}>
+                    <button
+                        onClick={() => {
+                            removeTask(id)
+                        }}
+                    >
+                        Remove task
+                    </button>
+                    <DeleteIcon className={"w-8"} />
+                </label>
+                <label className={"flex w-max flex-row gap-2"}>
+                    <button
+                        onClick={() => {
+                            editTask(id)
+                        }}
+                    >
+                        Edit task
+                    </button>
+                    <EditIcon className={"w-8"} />
+                </label>
             </div>
         </article>
     )
