@@ -1,23 +1,15 @@
 import { useForm } from "react-hook-form"
+import { createTask } from "../logic.js"
 
 export function TaskCreator() {
     const { register, handleSubmit } = useForm()
-
-    function sendForm(data) {
-        const task = {
-            title: data.title,
-            description: data.description,
-        }
-
-        console.log(task)
-    }
 
     return (
         <fieldset className={"mx-3 border p-3"}>
             <legend>Creador de tareas</legend>
             <form
                 className={"mx-3 flex flex-col items-center gap-5"}
-                onSubmit={handleSubmit(sendForm)}
+                onSubmit={handleSubmit(createTask)}
             >
                 <label className={"flex items-center gap-2"}>
                     Titulo de la tarea:
