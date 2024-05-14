@@ -15,7 +15,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <TaskCreator />
         <section
             className={
-                "m-3 my-10 flex h-max flex-col items-center gap-4 border border-black py-5 dark:border-white"
+                "m-3 my-10 flex h-max flex-col items-center gap-4 " +
+                "border border-black py-5 dark:border-white"
             }
         >
             <h1 className={"text-start font-mono text-xl font-semibold"}>

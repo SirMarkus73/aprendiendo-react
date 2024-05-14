@@ -37,7 +37,8 @@ export function TaskCreator() {
                 <button
                     type="submit"
                     className={
-                        "w-2/3 border transition-colors hover:bg-orange-400 dark:hover:bg-neutral-400"
+                        "w-2/3 border transition-colors hover:bg-orange-400 " +
+                        "dark:hover:bg-neutral-400"
                     }
                 >
                     Enviar
