@@ -34,17 +34,14 @@ function TaskList({ tasks, setTasks }) {
                     if (task) {
                         return (
                             <Task
-                                key={task.id}
-                                title={task.title}
+                                content={task}
                                 handleEdit={() => {
                                     handleEditTask(task.id)
                                 }}
                                 handleRemove={() => {
                                     handleRemoveTask(task.id)
                                 }}
-                            >
-                                {task.description}
-                            </Task>
+                            />
                         )
                     }
                 }

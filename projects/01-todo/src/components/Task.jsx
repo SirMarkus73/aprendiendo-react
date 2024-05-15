@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import DeleteIcon from "./icons/DeleteIcon.jsx"
 import EditIcon from "./icons/EditIcon.jsx"
 
-function Task({ title, children, handleRemove, handleEdit }) {
+function Task({ content, handleRemove, handleEdit }) {
     return (
         <article
             className={
@@ -17,10 +17,10 @@ function Task({ title, children, handleRemove, handleEdit }) {
                 <h2
                     className={"text-balance break-words text-center font-bold"}
                 >
-                    {title}
+                    {content.title}
                 </h2>
                 <p className={"h-max max-w-full text-pretty break-words"}>
-                    {children}
+                    {content.description}
                 </p>
             </div>
             <div className={"flex flex-row justify-around  gap-5 lg:flex-col"}>
@@ -46,8 +46,7 @@ function Task({ title, children, handleRemove, handleEdit }) {
 }
 
 Task.propTypes = {
-    title: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired,
+    content: PropTypes.object.isRequired,
     handleEdit: PropTypes.func.isRequired,
     handleRemove: PropTypes.func.isRequired,
 }
