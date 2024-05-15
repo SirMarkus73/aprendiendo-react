@@ -1,33 +1,28 @@
-export function createTask(data) {
-    const tasks = localStorage.getItem("tasks")
+export function createTask(data, tasks) {
+    let newTasks = [...tasks]
 
-    const task = {
+    const newTask = {
         title: data.title,
         description: data.description,
     }
 
-    const parseTasks = JSON.parse(tasks)
-
-    let newTasks = []
-
-    if (tasks) {
+    if (newTasks.length > 0) {
         let ids = []
-        parseTasks.map((task) => {
-            ids.push(task.id)
+
+        newTasks.map((task) => {
+            if (task) ids.push(task.id)
         })
 
         const sortedIds = ids.sort()
 
-        task.id = sortedIds[sortedIds.length - 1] + 1
+        newTask.id = sortedIds[sortedIds.length - 1] + 1
     } else {
-        task.id = 1
+        newTask.id = 1
     }
 
-    tasks ? newTasks.push(task, ...parseTasks) : newTasks.push(task)
+    newTasks.push(newTask)
 
-    localStorage.setItem("tasks", JSON.stringify(newTasks))
-
-    location.reload()
+    return newTasks
 }
 
 export function getTasks() {
@@ -36,49 +31,35 @@ export function getTasks() {
     return tasks ? parseTasks : []
 }
 
-export function removeTask(id) {
-    const tasks = getTasks()
+export function removeTask(id, tasks) {
+    let newTasks = [...tasks]
 
-    let newTasks = []
-
-    tasks.map((task) => {
-        if (task.id !== id) {
-            newTasks.push(task)
+    tasks.map((task, index) => {
+        if (task) {
+            if (task.id === id) {
+                newTasks[index] = null
+            }
         }
     })
 
-    if (newTasks.length > 0) {
-        localStorage.setItem("tasks", JSON.stringify(newTasks))
-    } else {
-        localStorage.removeItem("tasks")
-    }
-
-    location.reload()
+    return newTasks
 }
 
-export function editTask(id) {
-    const tasks = getTasks()
+export function editTask(id, tasks) {
+    let newTasks = [...tasks]
 
-    let newTasks = []
-    tasks.map((task) => {
+    newTasks.map((task, index) => {
         if (task.id === id) {
             const newName = prompt("Nuevo titulo", task.title)
             const newDescription = prompt("Nueva descripción", task.description)
 
-            const newTask = {
+            newTasks[index] = {
                 id: task.id,
                 title: newName,
                 description: newDescription,
             }
-            newTasks.push(newTask)
-        } else {
-            newTasks.push(task)
         }
     })
 
-    if (newTasks.length > 0) {
-        localStorage.setItem("tasks", JSON.stringify(newTasks))
-    }
-
-    location.reload()
+    return newTasks
 }

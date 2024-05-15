@@ -1,8 +1,14 @@
 import { useForm } from "react-hook-form"
+import PropTypes from "prop-types"
 import { createTask } from "../logic.js"
 
-export function TaskCreator() {
+export function TaskCreator({ tasks, setTasks }) {
     const { register, handleSubmit } = useForm()
+
+    const updateTasks = (data) => {
+        let newTasks = createTask(data, tasks)
+        setTasks(newTasks)
+    }
 
     return (
         <fieldset className={"mx-3 border border-black p-3 dark:border-white"}>
@@ -11,7 +17,7 @@ export function TaskCreator() {
             </legend>
             <form
                 className={"mx-3 flex flex-col items-center gap-5"}
-                onSubmit={handleSubmit(createTask)}
+                onSubmit={handleSubmit(updateTasks)}
             >
                 <label className={"flex items-center gap-2"}>
                     Titulo de la tarea:
@@ -46,4 +52,9 @@ export function TaskCreator() {
             </form>
         </fieldset>
     )
+}
+
+TaskCreator.propTypes = {
+    tasks: PropTypes.array.isRequired,
+    setTasks: PropTypes.func.isRequired,
 }

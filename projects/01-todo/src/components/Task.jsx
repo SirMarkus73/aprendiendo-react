@@ -3,7 +3,22 @@ import { removeTask, editTask } from "../logic.js"
 import { DeleteIcon } from "./icons/DeleteIcon.jsx"
 import { EditIcon } from "./icons/EditIcon.jsx"
 
-export function Task({ id, title, children }) {
+export function Task({ id, title, children, tasks, setTasks }) {
+    const handleEdit = () => {
+        const newTasks = editTask(id, tasks)
+        setTasks(newTasks)
+    }
+
+    const handleRemove = () => {
+        const newTasks = removeTask(id, tasks)
+
+        if (newTasks.every((newTask) => newTask === null)) {
+            setTasks([])
+        } else {
+            setTasks(newTasks)
+        }
+    }
+
     return (
         <article
             className={
@@ -19,25 +34,13 @@ export function Task({ id, title, children }) {
                 <label
                     className={"flex w-36 flex-row gap-2 md:justify-between"}
                 >
-                    <button
-                        onClick={() => {
-                            removeTask(id)
-                        }}
-                    >
-                        Remove task
-                    </button>
+                    <button onClick={handleRemove}>Remove task</button>
                     <DeleteIcon className={"w-8"} />
                 </label>
                 <label
                     className={"flex w-36 flex-row gap-2 md:justify-between"}
                 >
-                    <button
-                        onClick={() => {
-                            editTask(id)
-                        }}
-                    >
-                        Edit task
-                    </button>
+                    <button onClick={handleEdit}>Edit task</button>
                     <EditIcon className={"w-8"} />
                 </label>
             </div>
@@ -48,5 +51,7 @@ export function Task({ id, title, children }) {
 Task.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    tasks: PropTypes.array.isRequired,
+    setTasks: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
 }
