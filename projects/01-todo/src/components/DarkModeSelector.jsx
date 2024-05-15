@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getDarkMode, saveDarkMode } from "../logic/localStorageManager.js"
 
-function darkModeSelector() {
+function DarkModeSelector() {
     const [darkMode, setDarkMode] = useState(getDarkMode())
 
     useEffect(() => {
@@ -34,4 +34,4 @@ function darkModeSelector() {
     )
 }
 
-export default darkModeSelector
+export default DarkModeSelector

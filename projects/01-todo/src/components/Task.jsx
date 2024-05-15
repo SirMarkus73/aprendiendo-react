@@ -17,10 +17,14 @@ export function Task({ id, title, children, tasks, setTasks }) {
     return (
         <article
             className={
-                "grid w-2/3 grid-cols-2 gap-3 border border-black bg-neutral-400 p-1 dark:bg-neutral-700 md:flex-row"
+                "border-dark dark: flex w-2/3 grid-rows-2 flex-col justify-between gap-3 border bg-neutral-400  p-2 dark:border-white dark:bg-neutral-700  lg:flex-row"
             }
         >
-            <div className={"max-w-1/2 flex flex-col flex-wrap gap-2 "}>
+            <div
+                className={
+                    " flex w-2/3 flex-col flex-wrap justify-center gap-2 break-words"
+                }
+            >
                 <h2
                     className={"text-balance break-words text-center font-bold"}
                 >
@@ -30,7 +34,7 @@ export function Task({ id, title, children, tasks, setTasks }) {
                     {children}
                 </p>
             </div>
-            <div className={"flex flex-row justify-around gap-2 md:flex-col"}>
+            <div className={"flex flex-row justify-around  gap-5 lg:flex-col"}>
                 <label
                     className={
                         "flex w-36 cursor-pointer flex-row gap-2 md:justify-between"
