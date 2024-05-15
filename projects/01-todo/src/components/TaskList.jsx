@@ -31,8 +31,8 @@ function TaskList({ tasks, setTasks }) {
             </h1>
             {tasks.map((task) => {
                 {
-                    if (task) {
-                        return (
+                    return (
+                        task && (
                             <Task
                                 content={task}
                                 handleEdit={() => {
@@ -43,7 +43,7 @@ function TaskList({ tasks, setTasks }) {
                                 }}
                             />
                         )
-                    }
+                    )
                 }
             })}
         </section>
