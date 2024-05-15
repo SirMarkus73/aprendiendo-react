@@ -1,7 +1,14 @@
 import PropTypes from "prop-types"
 import { Task } from "./Task.jsx"
+import { useEffect } from "react"
+
+import { saveTasks } from "../logic/localStorageManager.js"
 
 export function TaskList({ tasks, setTasks }) {
+    useEffect(() => {
+        saveTasks(tasks)
+    }, [tasks])
+
     return (
         <section
             className={

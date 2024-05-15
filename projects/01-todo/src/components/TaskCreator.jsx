@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import PropTypes from "prop-types"
-import { createTask } from "../logic.js"
+import { createTask } from "../logic/todo.js"
 
 export function TaskCreator({ tasks, setTasks, className }) {
     const { register, handleSubmit } = useForm()

@@ -1,10 +1,6 @@
-import PropTypes from "prop-types"
+import DarkModeSelector from "./DarkModeSelector.jsx"
 
-export function Header({ darkMode, setDarkMode }) {
-    const changeTheme = () => {
-        setDarkMode(!darkMode)
-    }
-
+export function Header() {
     return (
         <header
             className={
@@ -12,23 +8,7 @@ export function Header({ darkMode, setDarkMode }) {
             }
         >
             <h2 className={"text-2xl"}>To-Do App</h2>
-            <label
-                className={
-                    "flex flex-row gap-3 border border-black p-3 dark:border-white"
-                }
-            >
-                DarkMode:
-                <input
-                    type={"checkbox"}
-                    value={darkMode}
-                    onClick={changeTheme}
-                />
-            </label>
+            <DarkModeSelector />
         </header>
     )
-}
-
-Header.propTypes = {
-    darkMode: PropTypes.bool.isRequired,
-    setDarkMode: PropTypes.func.isRequired,
 }

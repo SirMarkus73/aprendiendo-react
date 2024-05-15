@@ -25,12 +25,6 @@ export function createTask(data, tasks) {
     return newTasks
 }
 
-export function getTasks() {
-    const tasks = localStorage.getItem("tasks")
-    const parseTasks = JSON.parse(tasks)
-    return tasks ? parseTasks : []
-}
-
 export function removeTask(id, tasks) {
     let newTasks = [...tasks]
 
@@ -42,6 +36,7 @@ export function removeTask(id, tasks) {
         }
     })
 
+    if (newTasks.every((task) => task === null)) return [] // Si todas las tareas son null retorna un array vacío
     return newTasks
 }
 
