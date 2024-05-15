@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 
-export function EditIcon({ className }) {
+function EditIcon({ className }) {
     return (
         <svg viewBox="0 0 24 24" className={className}>
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -37,6 +37,8 @@ export function EditIcon({ className }) {
         </svg>
     )
 }
+
+export default EditIcon
 
 EditIcon.propTypes = {
     className: PropTypes.string,

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 
-export function DeleteIcon({ className }) {
+function DeleteIcon({ className }) {
     return (
         <svg viewBox="0 -5 32 32" className={`${className}`}>
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -35,6 +35,9 @@ export function DeleteIcon({ className }) {
         </svg>
     )
 }
+
 DeleteIcon.propTypes = {
     className: PropTypes.string,
 }
+
+export default DeleteIcon

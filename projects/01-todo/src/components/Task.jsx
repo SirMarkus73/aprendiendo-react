@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import { removeTask, editTask } from "../logic/todo.js"
-import { DeleteIcon } from "./icons/DeleteIcon.jsx"
-import { EditIcon } from "./icons/EditIcon.jsx"
+import DeleteIcon from "./icons/DeleteIcon.jsx"
+import EditIcon from "./icons/EditIcon.jsx"
 
 export function Task({ id, title, children, tasks, setTasks }) {
     const handleEdit = () => {
