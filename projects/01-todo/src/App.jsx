@@ -21,7 +21,11 @@ export function App() {
     return (
         <main>
             <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-            <TaskCreator tasks={tasks} setTasks={setTasks} />
+            <TaskCreator
+                tasks={tasks}
+                setTasks={setTasks}
+                className={"mt-28"}
+            />
             <TaskList tasks={tasks} setTasks={setTasks} />
         </main>
     )

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import PropTypes from "prop-types"
 import { createTask } from "../logic.js"
 
-export function TaskCreator({ tasks, setTasks }) {
+export function TaskCreator({ tasks, setTasks, className }) {
     const { register, handleSubmit } = useForm()
 
     const updateTasks = (data) => {
@@ -11,7 +11,11 @@ export function TaskCreator({ tasks, setTasks }) {
     }
 
     return (
-        <fieldset className={"mx-3 border border-black p-3 dark:border-white"}>
+        <fieldset
+            className={
+                "mx-3 border border-black p-3 dark:border-white " + className
+            }
+        >
             <legend className={"px-1 font-mono text-xl font-semibold"}>
                 Creador de tareas
             </legend>
@@ -43,8 +47,7 @@ export function TaskCreator({ tasks, setTasks }) {
                 <button
                     type="submit"
                     className={
-                        "w-2/3 border transition-colors hover:bg-orange-400 " +
-                        "dark:hover:bg-neutral-400"
+                        "w-2/3 border border-black transition-colors hover:bg-orange-400 dark:border-white dark:hover:bg-neutral-400"
                     }
                 >
                     Enviar
@@ -57,4 +60,5 @@ export function TaskCreator({ tasks, setTasks }) {
 TaskCreator.propTypes = {
     tasks: PropTypes.array.isRequired,
     setTasks: PropTypes.func.isRequired,
+    className: PropTypes.string,
 }
