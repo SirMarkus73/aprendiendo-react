@@ -30,21 +30,19 @@ function TaskList({ tasks, setTasks }) {
                 Lista de tareas
             </h1>
             {tasks.map((task) => {
-                {
-                    return (
-                        task && (
-                            <Task
-                                content={task}
-                                handleEdit={() => {
-                                    handleEditTask(task.id)
-                                }}
-                                handleRemove={() => {
-                                    handleRemoveTask(task.id)
-                                }}
-                            />
-                        )
+                return (
+                    task && (
+                        <Task
+                            content={task}
+                            handleEdit={() => {
+                                handleEditTask(task.id)
+                            }}
+                            handleRemove={() => {
+                                handleRemoveTask(task.id)
+                            }}
+                        />
                     )
-                }
+                )
             })}
         </section>
     )
