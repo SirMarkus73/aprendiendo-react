@@ -3,7 +3,7 @@ import { removeTask, editTask } from "../logic/todo.js"
 import DeleteIcon from "./icons/DeleteIcon.jsx"
 import EditIcon from "./icons/EditIcon.jsx"
 
-export function Task({ id, title, children, tasks, setTasks }) {
+function Task({ id, title, children, tasks, setTasks }) {
     const handleEdit = () => {
         const newTasks = editTask(id, tasks)
         setTasks(newTasks)
@@ -63,3 +63,5 @@ Task.propTypes = {
     setTasks: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
 }
+
+export default Task

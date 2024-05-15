@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import PropTypes from "prop-types"
 import { createTask } from "../logic/todo.js"
 
-export function TaskCreator({ tasks, setTasks, className }) {
+function TaskCreator({ tasks, setTasks, className }) {
     const { register, handleSubmit } = useForm()
 
     const updateTasks = (data) => {
@@ -62,3 +62,5 @@ TaskCreator.propTypes = {
     setTasks: PropTypes.func.isRequired,
     className: PropTypes.string,
 }
+
+export default TaskCreator

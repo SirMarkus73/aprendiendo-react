@@ -1,10 +1,11 @@
-import PropTypes from "prop-types"
-import { Task } from "./Task.jsx"
 import { useEffect } from "react"
+import PropTypes from "prop-types"
+
+import Task from "./Task.jsx"
 
 import { saveTasks } from "../logic/localStorageManager.js"
 
-export function TaskList({ tasks, setTasks }) {
+function TaskList({ tasks, setTasks }) {
     useEffect(() => {
         saveTasks(tasks)
     }, [tasks])
@@ -44,3 +45,5 @@ TaskList.propTypes = {
     tasks: PropTypes.array.isRequired,
     setTasks: PropTypes.func.isRequired,
 }
+
+export default TaskList

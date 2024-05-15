@@ -1,6 +1,6 @@
 import DarkModeSelector from "./DarkModeSelector.jsx"
 
-export function Header() {
+function Header() {
     return (
         <header
             className={
@@ -12,3 +12,5 @@ export function Header() {
         </header>
     )
 }
+
+export default Header
