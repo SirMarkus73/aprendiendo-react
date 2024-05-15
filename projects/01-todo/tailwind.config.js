@@ -2,7 +2,8 @@
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: { darkMode: "selector" },
+        extend: {},
     },
+    darkMode: "class",
     plugins: ["prettier-plugin-tailwindcss"],
 }
