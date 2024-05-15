@@ -1,19 +1,8 @@
 import PropTypes from "prop-types"
-import { removeTask, editTask } from "../logic/todo.js"
 import DeleteIcon from "./icons/DeleteIcon.jsx"
 import EditIcon from "./icons/EditIcon.jsx"
 
-function Task({ id, title, children, tasks, setTasks }) {
-    const handleEdit = () => {
-        const newTasks = editTask(id, tasks)
-        setTasks(newTasks)
-    }
-
-    const handleRemove = () => {
-        const newTasks = removeTask(id, tasks)
-        setTasks(newTasks)
-    }
-
+function Task({ title, children, handleRemove, handleEdit }) {
     return (
         <article
             className={
@@ -22,7 +11,7 @@ function Task({ id, title, children, tasks, setTasks }) {
         >
             <div
                 className={
-                    " flex w-2/3 flex-col flex-wrap justify-center gap-2 break-words"
+                    " flex w-full flex-col flex-wrap justify-center gap-2 break-words lg:w-2/3"
                 }
             >
                 <h2
@@ -57,11 +46,10 @@ function Task({ id, title, children, tasks, setTasks }) {
 }
 
 Task.propTypes = {
-    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    tasks: PropTypes.array.isRequired,
-    setTasks: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
+    handleEdit: PropTypes.func.isRequired,
+    handleRemove: PropTypes.func.isRequired,
 }
 
 export default Task

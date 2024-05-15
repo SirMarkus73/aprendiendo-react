@@ -4,11 +4,20 @@ import PropTypes from "prop-types"
 import Task from "./Task.jsx"
 
 import { saveTasks } from "../logic/localStorageManager.js"
+import { editTask, removeTask } from "../logic/todo.js"
 
 function TaskList({ tasks, setTasks }) {
     useEffect(() => {
         saveTasks(tasks)
     }, [tasks])
+
+    const handleRemoveTask = (taskId) => {
+        setTasks(removeTask(taskId, tasks))
+    }
+
+    const handleEditTask = (taskId) => {
+        setTasks(editTask(taskId, tasks))
+    }
 
     return (
         <section
@@ -26,10 +35,13 @@ function TaskList({ tasks, setTasks }) {
                         return (
                             <Task
                                 key={task.id}
-                                id={task.id}
                                 title={task.title}
-                                tasks={tasks}
-                                setTasks={setTasks}
+                                handleEdit={() => {
+                                    handleEditTask(task.id)
+                                }}
+                                handleRemove={() => {
+                                    handleRemoveTask(task.id)
+                                }}
                             >
                                 {task.description}
                             </Task>
