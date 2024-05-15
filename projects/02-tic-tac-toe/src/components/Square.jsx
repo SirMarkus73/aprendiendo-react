@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 
-export function Square({ children, handleBoxClick, index, play }) {
+export function Square({ children, handleBoxClick, index }) {
   const handleClick = () => {
     handleBoxClick(index);
   };
 
-  const pointer = play === null ? "cursor-pointer" : "cursor-not-allowed";
+  const pointer = children === null ? "cursor-pointer" : "cursor-not-allowed";
 
   return (
     <div
@@ -20,6 +20,5 @@ export function Square({ children, handleBoxClick, index, play }) {
 Square.propTypes = {
   index: PropTypes.number.isRequired,
   handleBoxClick: PropTypes.func.isRequired,
-  play: PropTypes.string,
   children: PropTypes.node,
 };
