@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ShowWiner } from "./ShowWiner.jsx";
+import { ShowWinner } from "./ShowWiner.jsx";
 
 export function WinnerModal({ children, winner }) {
   if (winner === null) return;
@@ -21,7 +21,7 @@ export function WinnerModal({ children, winner }) {
           }
         >
           {winnerText}
-          <ShowWiner winner={winner} />
+          <ShowWinner winner={winner} />
           {children}
         </div>
       </div>

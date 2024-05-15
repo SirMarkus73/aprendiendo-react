@@ -1,19 +1,18 @@
 import PropTypes from "prop-types";
+import { bgPlays } from "../consts.js";
 
-export function ShowWiner({ winner }) {
+export function ShowWinner({ winner }) {
   if (winner === null || winner === false) return;
 
   return (
     <section
-      className={
-        "grid h-10 w-10 place-items-center rounded-lg border border-white bg-orange-400 text-black"
-      }
+      className={`grid h-10 w-10 place-items-center rounded-lg border border-white text-black ${bgPlays}`}
     >
       {winner}
     </section>
   );
 }
 
-ShowWiner.propTypes = {
+ShowWinner.propTypes = {
   winner: PropTypes.any,
 };

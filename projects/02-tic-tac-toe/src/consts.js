@@ -10,6 +10,8 @@ export const winnerCombos = [
 ];
 
 export const PLAYS = {
-  X: "X",
-  O: "O",
+  X: "❌",
+  O: "⭕",
 };
+
+export const bgPlays = "bg-slate-200";
