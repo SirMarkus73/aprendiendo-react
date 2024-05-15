@@ -32,7 +32,7 @@ export function App() {
             winnerState={[winner, setWinner]}
             resetFunc={resetGame}
           />
-          <ShowTurn turn={turn} prevTurn={true} />
+          <ShowTurn turn={turn} />
           <WinnerModal winner={winner}>
             <ResetButton resetFunction={resetGame} />
           </WinnerModal>
