@@ -1,43 +1,49 @@
+import { useEffect, useState } from "react";
+
 import { Board } from "./components/Board.jsx";
-import { useState } from "react";
-import { PLAYS } from "./consts.js";
 import { ResetButton } from "./components/ResetButton.jsx";
 import { ShowTurn } from "./components/ShowTurn.jsx";
 import { WinnerModal } from "./components/WinnerModal.jsx";
 
+import { loadBoard, loadTurn, saveGame } from "./logic/gameProgression.js";
+
 export function App() {
-  const [turn, setTurn] = useState(PLAYS.X);
-  const [board, setBoard] = useState(Array(9).fill(null));
+  const [turn, setTurn] = useState(loadTurn());
+  const [board, setBoard] = useState(loadBoard());
   const [winner, setWinner] = useState(null);
 
-  const resetGame = () => {
-    setWinner(null);
-    setBoard(Array(9).fill(null));
-    setTurn(PLAYS.X);
-  };
+  // Cuando cambie de turno o tablero guarda partida
+  useEffect(() => {
+    saveGame(board, turn);
+  }, [board, turn]);
 
   return (
-    <>
-      <main className={"grid place-items-center gap-5"}>
-        <h1
-          className={"w-full bg-slate-700 text-center text-2xl text-orange-700"}
-        >
-          Tic Tac Toe
-        </h1>
-        <section>
-          <ResetButton resetFunction={resetGame} />
-          <Board
-            turnState={[turn, setTurn]}
-            boardState={[board, setBoard]}
-            winnerState={[winner, setWinner]}
-            resetFunc={resetGame}
+    <main className={"grid place-items-center gap-5"}>
+      <h1
+        className={"w-full bg-slate-700 text-center text-2xl text-orange-700"}
+      >
+        Tic Tac Toe
+      </h1>
+      <section>
+        <ResetButton
+          setTurn={setTurn}
+          setBoard={setBoard}
+          setWinner={setWinner}
+        />
+        <Board
+          turnState={[turn, setTurn]}
+          boardState={[board, setBoard]}
+          winnerState={[winner, setWinner]}
+        />
+        <ShowTurn turn={turn} />
+        <WinnerModal winner={winner}>
+          <ResetButton
+            setTurn={setTurn}
+            setBoard={setBoard}
+            setWinner={setWinner}
           />
-          <ShowTurn turn={turn} />
-          <WinnerModal winner={winner}>
-            <ResetButton resetFunction={resetGame} />
-          </WinnerModal>
-        </section>
-      </main>
-    </>
+        </WinnerModal>
+      </section>
+    </main>
   );
 }

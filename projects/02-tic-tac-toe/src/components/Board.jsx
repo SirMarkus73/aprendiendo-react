@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import confetti from "canvas-confetti";
 
 import { Square } from "./Square.jsx";
 import { PLAYS } from "../consts.js";
-import { checkTie, checkWinner } from "../logic.js";
+import { checkTieFrom, checkWinnerFrom } from "../logic/board.js";
+import confetti from "canvas-confetti";
 
 export function Board({ turnState, boardState, winnerState }) {
   const [turn, setTurn] = turnState;
@@ -19,15 +19,11 @@ export function Board({ turnState, boardState, winnerState }) {
 
     setBoard(newBoard);
 
-    if (checkWinner(newBoard)) {
-      confetti();
-      setWinner(checkWinner(newBoard));
-    } else if (checkTie(newBoard) === false) {
-      setWinner(checkTie(newBoard));
-    }
-
     const newTurn = turn === PLAYS.X ? PLAYS.O : PLAYS.X;
     setTurn(newTurn);
+
+    if (checkWinnerFrom(newBoard, setWinner)) confetti();
+    checkTieFrom(newBoard, setWinner);
   };
 
   return (
